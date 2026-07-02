@@ -1,0 +1,10 @@
+# build artifacts
+*.deb
+*.ddeb
+*.build
+*.buildinfo
+*.changes
+*.dsc
+*.tar.*
+*.orig.*
+build/
