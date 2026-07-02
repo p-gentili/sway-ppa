@@ -8,3 +8,4 @@
 *.tar.*
 *.orig.*
 build/
+debian/files

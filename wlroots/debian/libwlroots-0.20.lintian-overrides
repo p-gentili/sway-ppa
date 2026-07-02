@@ -1,0 +1,2 @@
+# The version is encoded in the libarary name so there's no libwlroots*.so.<number>
+libwlroots-0.20: lacks-unversioned-link-to-shared-library
