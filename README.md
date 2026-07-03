@@ -23,13 +23,34 @@ sudo apt update
 sudo apt install sway
 ```
 
+### Screen sharing
+
+For screen sharing to work in browsers (Chromium/Firefox on Meet, etc.), install the
+wlroots screen-cast portal — without it, browsers can only share a single tab, not the
+screen or a window:
+
+```bash
+sudo apt install xdg-desktop-portal-wlr
+```
+
+Then log out and back in. In Chromium also enable *Preferred Ozone platform = Wayland*
+(`chrome://flags`) and `chrome://flags/#enable-webrtc-pipewire-camera`.
+
+**This PPA ships a patched `xdg-desktop-portal-wlr`** (`0.8.1-1ppa1~ubuntu26.04.1`). The
+archive's stock 0.8.1 crashes when sharing a single *window* on 26.04: the per-window
+capture path (`ext-image-copy-capture`) fails format negotiation with PipeWire 1.6.x
+(`res:-32 "no more output formats"`) because a variable-framerate stream builds an invalid
+`maxFramerate` and divides by zero. The PPA backports the two upstream fixes (landed in
+0.8.2) so single-window sharing works. Whole-monitor sharing works either way.
+
 ## Repository layout
 
 ```
-wlroots/debian/   committed wlroots 0.20 packaging
-sway/debian/      committed sway 1.12 packaging
-build/            working area (gitignored): source trees, tarballs, .deb output
-docs/superpowers/ design spec and implementation plan
+wlroots/debian/                committed wlroots 0.20 packaging
+sway/debian/                   committed sway 1.12 packaging
+xdg-desktop-portal-wlr/debian/ committed portal packaging (0.8.1 + PipeWire 1.6.x patches)
+build/                         working area (gitignored): source trees, tarballs, .deb output
+docs/superpowers/              design spec and implementation plan
 ```
 
 ## Prerequisites (one-time)

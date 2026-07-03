@@ -1,0 +1,6 @@
+Version: 5
+
+Source: https://github.com/emersion/xdg-desktop-portal-wlr
+Matching-Pattern: refs/tags/@ANY_VERSION@
+Mode: git
+Pgp-Mode: gittag
