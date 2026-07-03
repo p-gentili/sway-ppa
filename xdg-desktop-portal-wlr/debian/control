@@ -1,0 +1,32 @@
+Source: xdg-desktop-portal-wlr
+Section: x11
+Maintainer: Sway and related packages team <team+swaywm@tracker.debian.org>
+Uploaders: Birger Schacht <birger@debian.org>
+Build-Depends: debhelper-compat (= 13),
+               meson,
+               ninja-build,
+               pkgconf,
+               cmake,
+               libdrm-dev,
+               libinih-dev,
+               libgbm-dev,
+               libpipewire-0.3-dev,
+               libwayland-dev,
+               wayland-protocols,
+               libsystemd-dev | libelogind-dev,
+               systemd-dev,
+               scdoc
+Standards-Version: 4.7.3
+Homepage: https://github.com/emersion/xdg-desktop-portal-wlr
+Vcs-Git: https://salsa.debian.org/swaywm-team/xdg-desktop-portal-wlr.git
+Vcs-Browser: https://salsa.debian.org/swaywm-team/xdg-desktop-portal-wlr
+
+Package: xdg-desktop-portal-wlr
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}, xdg-desktop-portal, pipewire
+Recommends: slurp | wofi | bemenu
+Provides: xdg-desktop-portal-backend
+Description: xdg-desktop-portal backend for wlroots
+ Support for the screenshot, screencast, and possibly remote-desktop
+ xdg-desktop-portal interfaces for wlroots based compositors.

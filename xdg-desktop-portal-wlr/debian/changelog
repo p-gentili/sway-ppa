@@ -1,0 +1,134 @@
+xdg-desktop-portal-wlr (0.8.1-1ppa1~ubuntu26.04.1) resolute; urgency=medium
+
+  * Cherry-pick upstream fixes for screencast on PipeWire 1.6.x (fixes
+    single-window sharing crashing with "no more output formats"):
+  * d/p/pipewire-1.6-fix-framerate-negotiation.patch: skip maxFramerate
+    and guard division when framerate == 0 (upstream 896cee82, in
+    0.8.2).
+  * d/p/pipewire-1.6-readable-mappable-buffers.patch: set
+    READABLE/MAPPABLE buffer flags to avoid client segfaults (upstream
+    45983137, in 0.8.2).
+
+ -- Paolo Gentili <paolo@pgentili.com>  Fri, 03 Jul 2026 14:26:20 +0200
+
+xdg-desktop-portal-wlr (0.8.1-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/control:
+   + Bump Standards-Version to 4.7.3
+   + Drop redundant Priority: optional field
+  * debian/copyright:
+   + Update years to 2026
+
+ -- Birger Schacht <birger@debian.org>  Sat, 10 Jan 2026 20:46:45 +0100
+
+xdg-desktop-portal-wlr (0.8.0-1) unstable; urgency=medium
+
+  * New upstream release
+  * Update debian/watch to version 5 format
+  * Drop pristine-tar from debian/gbp.conf
+  * Bump Standards-Version in debian/control
+  * Drop redundant Rules-Requires-Root field in debian/control
+  * Bump years in debian/copyright
+
+ -- Birger Schacht <birger@debian.org>  Sun, 30 Nov 2025 10:02:07 +0100
+
+xdg-desktop-portal-wlr (0.7.1-2) unstable; urgency=medium
+
+  * debian/control: add default supported choosers as recommended packages
+    (Closes: #1091424)
+
+ -- Birger Schacht <birger@debian.org>  Fri, 03 Jan 2025 10:16:37 +0100
+
+xdg-desktop-portal-wlr (0.7.1-1) unstable; urgency=medium
+
+  * New upstream release
+  * d/control: replace pkg-config with pkgconf
+
+ -- Birger Schacht <birger@debian.org>  Sun, 11 Feb 2024 15:00:57 +0100
+
+xdg-desktop-portal-wlr (0.7.0-2) unstable; urgency=medium
+
+  * d/control:
+   + replace build dependency systemd with systemd-dev (Closes: #1060498)
+   + bump standards version (no changes needed)
+  * d/copyright: bump years
+
+
+ -- Birger Schacht <birger@debian.org>  Sat, 13 Jan 2024 13:00:57 +0100
+
+xdg-desktop-portal-wlr (0.7.0-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream release.
+    - fixes screen sharing with latest chromium. (Closes: #1034735)
+
+ -- Jochen Sprickerhof <jspricke@debian.org>  Fri, 28 Apr 2023 10:59:18 +0200
+
+xdg-desktop-portal-wlr (0.6.0-1) unstable; urgency=medium
+
+  * New upstream release
+  * Add new build-dependencies: libdrm-dev and libgbm-dev
+  * Bump Standards-Version to 4.6.1.0
+  * Drop copyright entry for removed file
+  * Update d/watch to use gittag and check gpg signature
+  * Add upstream signing key
+
+ -- Birger Schacht <birger@debian.org>  Sat, 02 Jul 2022 10:11:20 +0200
+
+xdg-desktop-portal-wlr (0.5.0-4) unstable; urgency=medium
+
+  * d/rules: Set -Wno-error=implicit-function-declaration (Closes: #1009464)
+
+ -- Birger Schacht <birger@debian.org>  Wed, 04 May 2022 18:07:54 +0200
+
+xdg-desktop-portal-wlr (0.5.0-3) unstable; urgency=medium
+
+  * Provide xdg-desktop-portal-backend (Closes: #1005869)
+  * Set maintainer to team address
+  * Update year in d/copyright
+  * Drop filenamemangle option from d/watch
+
+ -- Birger Schacht <birger@debian.org>  Wed, 16 Feb 2022 15:01:05 +0100
+
+xdg-desktop-portal-wlr (0.5.0-2) unstable; urgency=medium
+
+  * Add scdoc to build-depends, to build manpage
+  * Add pipewire to dependencies
+  * Mark as Multi-Arch: foreign (Closes: #1002077)
+  * Update year in d/copyright
+
+ -- Birger Schacht <birger@debian.org>  Thu, 23 Dec 2021 18:09:34 +0100
+
+xdg-desktop-portal-wlr (0.5.0-1) unstable; urgency=medium
+
+  * New upstream release
+  * Bump standards-version to 4.6.0.1 (no changes required)
+
+ -- Birger Schacht <birger@debian.org>  Sat, 06 Nov 2021 19:12:40 +0100
+
+xdg-desktop-portal-wlr (0.4.0-1) unstable; urgency=medium
+
+  * New upstream version (Closes: #989503)
+  * Add new build dependency libinih-dev
+
+ -- Birger Schacht <birger@debian.org>  Tue, 31 Aug 2021 19:46:07 +0200
+
+xdg-desktop-portal-wlr (0.1.0-3) unstable; urgency=medium
+
+  * Ship systemd service file (Closes: #982691)
+  * Bump standards version to 4.5.1 (no changes required)
+
+ -- Birger Schacht <birger@debian.org>  Sun, 14 Feb 2021 08:38:50 +0100
+
+xdg-desktop-portal-wlr (0.1.0-2) unstable; urgency=medium
+
+  * Source-only upload as-is.
+
+ -- Birger Schacht <birger@debian.org>  Fri, 23 Oct 2020 17:49:59 +0200
+
+xdg-desktop-portal-wlr (0.1.0-1) unstable; urgency=medium
+
+  * Initial release. (Closes: #959944)
+
+ -- Birger Schacht <birger@debian.org>  Sun, 04 Oct 2020 11:11:40 +0200
