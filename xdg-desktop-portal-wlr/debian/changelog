@@ -1,3 +1,10 @@
+xdg-desktop-portal-wlr (0.8.5-0ppa1~ubuntu26.04.1) resolute; urgency=medium
+
+  * New upstream release 0.8.5.
+  * Drop d/p/pipewire-1.6-*.patch: both merged upstream in 0.8.2.
+
+ -- Paolo Gentili <paolo@pgentili.com>  Fri, 06 Nov 2026 13:52:59 -0800
+
 xdg-desktop-portal-wlr (0.8.1-1ppa1~ubuntu26.04.1) resolute; urgency=medium
 
   * Cherry-pick upstream fixes for screencast on PipeWire 1.6.x (fixes
