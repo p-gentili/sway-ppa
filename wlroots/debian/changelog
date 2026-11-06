@@ -1,3 +1,9 @@
+wlroots (0.20.2-0ppa1~ubuntu26.04.1) resolute; urgency=medium
+
+  * New upstream release 0.20.2.
+
+ -- Paolo Gentili <paolo@pgentili.com>  Fri, 06 Nov 2026 15:39:27 -0800
+
 wlroots (0.20.0-0ppa1~ubuntu26.04.1) resolute; urgency=medium
 
   * New upstream release 0.20.0; SONAME bump to 0.20 for sway 1.12.
