@@ -2,7 +2,8 @@
 
 Packaging for **Sway 1.12** and its required **wlroots 0.20**, published to
 [`ppa:pgentili/sway`](https://launchpad.net/~pgentili/+archive/ubuntu/sway) for Ubuntu
-26.04 (resolute), which otherwise ships only Sway 1.11 / wlroots 0.19.
+26.04 (resolute), which otherwise ships only Sway 1.11 / wlroots 0.19. It also ships a
+newer **xdg-desktop-portal-wlr** for working screen sharing (see below).
 
 Approach: rebase Ubuntu's existing 26.04 `debian/` packaging onto the new upstream
 releases. Design and plan live under [`docs/superpowers/`](docs/superpowers/).
@@ -25,9 +26,9 @@ sudo apt install sway
 
 ### Screen sharing
 
-For screen sharing to work in browsers (Chromium/Firefox on Meet, etc.), install the
-wlroots screen-cast portal — without it, browsers can only share a single tab, not the
-screen or a window:
+For screen sharing to work in browsers (Chromium/Firefox on Meet, etc.) and desktop apps,
+install the wlroots screen-cast portal. Without it, browsers can only share a single tab,
+not the screen or a window:
 
 ```bash
 sudo apt install xdg-desktop-portal-wlr
@@ -36,19 +37,26 @@ sudo apt install xdg-desktop-portal-wlr
 Then log out and back in. In Chromium also enable *Preferred Ozone platform = Wayland*
 (`chrome://flags`) and `chrome://flags/#enable-webrtc-pipewire-camera`.
 
-**This PPA ships a patched `xdg-desktop-portal-wlr`** (`0.8.1-1ppa1~ubuntu26.04.1`). The
-archive's stock 0.8.1 crashes when sharing a single *window* on 26.04: the per-window
-capture path (`ext-image-copy-capture`) fails format negotiation with PipeWire 1.6.x
-(`res:-32 "no more output formats"`) because a variable-framerate stream builds an invalid
-`maxFramerate` and divides by zero. The PPA backports the two upstream fixes (landed in
-0.8.2) so single-window sharing works. Whole-monitor sharing works either way.
+**This PPA ships a newer `xdg-desktop-portal-wlr`** (0.8.5) than the archive's 0.8.1.
+The archive's 0.8.1 is broken for screen sharing on 26.04:
+
+- Sharing a single *window* fails with PipeWire 1.6.x (`res:-32 "no more output
+  formats"`). Fixed upstream in 0.8.2.
+- The "changed regions" (damage) metadata sent with each frame is wrong. Apps that rely
+  on it, rather than redrawing the whole frame like Firefox does, can show a black
+  screen. Fixed upstream in 0.8.2.
+- Streams can freeze when PipeWire runs out of buffers. Fixed upstream in 0.8.4.
+
+The PPA version sorts above the archive's 0.8.1 updates, so `apt` keeps it installed.
+After upgrading the portal, run `systemctl --user restart xdg-desktop-portal-wlr`. After
+upgrading wlroots, log out of sway and back in.
 
 ## Repository layout
 
 ```
 wlroots/debian/                committed wlroots 0.20 packaging
 sway/debian/                   committed sway 1.12 packaging
-xdg-desktop-portal-wlr/debian/ committed portal packaging (0.8.1 + PipeWire 1.6.x patches)
+xdg-desktop-portal-wlr/debian/ committed portal packaging (0.8.5)
 build/                         working area (gitignored): source trees, tarballs, .deb output
 docs/superpowers/              design spec and implementation plan
 ```
